@@ -3,12 +3,18 @@ pipeline {
 
     stages {
         stage("Build") {
+            when {
+                branch "master"
+            }
             steps {
                 echo "Building the project..."
                 // build steps go here
             }
         }
         stage("Test") {
+            when {
+                branch "master"
+            }
             steps {
                 echo "Testing the project..."
                 // test steps go here
@@ -16,11 +22,11 @@ pipeline {
         }
         stage("Deploy") {
             when {
-                changeRequest targetBranch: "Alex"
+                branch "Alex"
             }
             steps {
-                echo "there is a change in the branch ALEX"
-             
+                echo "Deploying the project..."
+                // deploy steps go here
             }
         }
     }

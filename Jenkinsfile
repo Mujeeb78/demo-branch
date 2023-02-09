@@ -1,10 +1,6 @@
 pipeline {
     agent any
     stages {
-      pipeline {
-    agent any
-
-    stages {
         stage("Checking Docker Version") {
             when {
                 branch "master"
@@ -32,5 +28,5 @@ pipeline {
          }
         } 
       }
-    }
-}
+    
+

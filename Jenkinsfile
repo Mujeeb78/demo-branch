@@ -1,26 +1,36 @@
 pipeline {
     agent any
     stages {
-       stage("Checking Docker Version in master") {
+      pipeline {
+    agent any
+
+    stages {
+        stage("Checking Docker Version") {
+            when {
+                branch "master"
+            }
             steps {
-                {
-                sh "docker --version"
-                }
+                sh 'docker --version'
             }
         }
-        stage("Checking GIT Version in master") {
+        stage("Checking python Version") {
+            when {
+                branch "master"
+            }
             steps {
-                sh "git --version"
+                sh 'pyhton3 --version'
             }
         }
-        stage("branch Alex") {
+        stage("checking docker images") {
             when {
                 branch "Alex"
             }
             steps {
-                echo "running in branch Alex"
+                echo "docker images"
                 
             }
-        }
+         }
+        } 
+      }
     }
 }

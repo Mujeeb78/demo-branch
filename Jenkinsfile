@@ -2,31 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage("Build") {
-            when {
-                branch "master"
-            }
+       stage("Checking Docker Version in master") {
             steps {
-                echo "Building the project..."
-                // build steps go here
+                {
+                sh "docker --version"
+                }
             }
         }
-        stage("Test") {
-            when {
-                branch "master"
-            }
+        stage("Checking GIT Version in master") {
             steps {
-                echo "Testing the project..."
-                // test steps go here
+                sh "git --version"
             }
         }
-        stage("Deploy") {
+        stage("branch Alex") {
             when {
                 branch "Alex"
             }
             steps {
-                echo "Deploying the project..."
-                // deploy steps go here
+                echo "running in branch Alex"
+                
             }
         }
     }

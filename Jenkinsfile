@@ -1,6 +1,5 @@
 pipeline {
     agent any
-
     stages {
        stage("Checking Docker Version in master") {
             steps {
